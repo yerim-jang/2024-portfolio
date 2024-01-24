@@ -4,7 +4,7 @@
 // Collapse the navbar by adding the top-nav-collapse class
 window.onscroll = function () {
 	scrollFunction();
-	scrollFunctionBTT(); // back to top button
+	// scrollFunctionBTT(); // back to top button
 };
 
 window.onload = function () {
@@ -13,10 +13,40 @@ window.onload = function () {
 
 function scrollFunction() {
 	if (document.documentElement.scrollTop > 30) {
-		document.getElementById("navbarExample").classList.add("top-nav-collapse");
+		document.getElementById("header").classList.add("top-nav-collapse");
 	} else if ( document.documentElement.scrollTop < 30 ) {
-		document.getElementById("navbarExample").classList.remove("top-nav-collapse");
+		document.getElementById("header").classList.remove("top-nav-collapse");
 	}
+
+	// var curve_scroll = document.querySelector('.navbar-logo img')
+		// docHeight = document.documentElement.offsetHeight;
+
+	window.addEventListener('scroll', function(){
+
+		var scrollY = window.scrollY;
+
+		// 현재 스크롤 위치
+		if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+			// document.querySelector(".navbar-nav").style.fontSize = "14px";
+			document.querySelector(".navbar-collapse").style.display = "flex";
+			
+			// .navbar-logo img의 스케일 조정
+			var scaleValue = 1 - (scrollY - 50) / 500;
+			// 최대 스케일 값을 1로 제한
+			scaleValue = Math.min(1, scaleValue);
+			scaleValue = Math.max(0.1, scaleValue);
+
+			document.querySelector(".navbar-logo").style.transform = "scale(" + scaleValue + ")";
+			document.querySelector(".navbar-logo").style.transition = "0.2s ease";
+			// document.querySelector(".navbar-logo").style.top = "-172px";
+		} else {
+			// document.querySelector(".navbar-nav").style.fontSize = "0";
+			document.querySelector(".navbar-collapse").style.display = "none";
+			
+			// .navbar-logo img의 스케일을 원래 크기로 되돌림
+			// document.querySelector(".navbar-logo img").style.width = "150px";
+		}
+	})
 }
 
 // Navbar on mobile
@@ -121,13 +151,13 @@ var cardSlider = new Swiper('.card-slider', {
 myButton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-function scrollFunctionBTT() {
-	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		myButton.style.display = "block";
-	} else {
-		myButton.style.display = "none";
-	}
-}
+// function scrollFunctionBTT() {
+// 	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+// 		myButton.style.display = "block";
+// 	} else {
+// 		myButton.style.display = "none";
+// 	}
+// }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
