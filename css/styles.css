@@ -356,7 +356,7 @@ a:hover {
 	height: 100vh;
 }
 
-.header:hover{
+.main:hover{
 	cursor : url(../images/cursor-arrow.png)50 50, auto;
 }
 
@@ -392,6 +392,10 @@ a:hover {
 /*     Navigation     */
 /**********************/
 .navbar {
+	display: flex;
+	/* justify-content: space-between; */
+	align-items: center;
+	flex-wrap: nowrap;
 	width: 100%;
 	padding: 0 50px;
 	/* background-color: #fff2dc; */
@@ -401,42 +405,51 @@ a:hover {
 }
 
 .navbar .navbar-logo{
-	/* position: absolute;
-	top: -114px;
+	/* position: static; */
+	display: block;
+/*	top: -114px;
 	right: -30px;
 	max-width: 77%; */
-	position: fixed;
-    top: -30px;
-    right: 0;
-    width: 100vw;
+	/* position: fixed; */
+    /* top: 0;
+    right: 0; */
+    /* width: 100vw; */
+    max-width: 150px;
+	width: 150px;
+	/* flex: 1; */
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 .navbar .logo-image img {
-    width: 100%;
+    /* position: absolute; */
+	width: 100%;
+	min-width: 150px;
+	top: 70px;
 	/* height: auto; */
 	/* animation: 1s ease-in-out fadein; */
 }
 
-.navbar .logo-text {
+/* .navbar .logo-text {
 	color: #000;
 	font-weight: 400;
 	font-size: 1.875rem;
 	line-height: 1rem;
 	text-decoration: none;
-}
+} */
 
 .offcanvas-collapse {
-	display: none;
+	/* display: none; */
 	position: fixed;
-	flex: none;
+	/* flex: 1; */
 	top: 3.25rem; /* adjusts the height between the top of the page and the offcanvas menu */
 	bottom: 0;
 	left: 100%;
 	width: 100%;
 	padding-right: 1rem;
 	padding-left: 1rem;
-	overflow-y: auto;
-	visibility: hidden;
+	/* overflow-y: auto;
+	visibility: hidden; */
 	/* background-color: #fff2dc; */
 	transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
 	transition: transform .3s ease-in-out, visibility .3s ease-in-out;
@@ -447,6 +460,13 @@ a:hover {
 	visibility: visible;
 	-webkit-transform: translateX(-100%);
 	transform: translateX(-100%);
+}
+.aaa{
+	position: absolute;
+	right: 50%;
+	transform: translateX(50%);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .navbar .navbar-nav {
@@ -474,6 +494,19 @@ a:hover {
 	padding: 0;
 	border: none;
 	font-size: 1.25rem;
+}
+
+.navbar .progress-bar{
+	content: ' ';
+	/* position: absolute; */
+	right: 50px;
+	display: inline-block;
+	width: 100%;
+	height: 4px;
+	background: #A91C1C;
+	transition: width 300ms;
+	z-index: 9;
+	/* flex: 1; */
 }
 
 /********************/

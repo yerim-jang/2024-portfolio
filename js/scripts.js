@@ -22,30 +22,41 @@ function scrollFunction() {
 		// docHeight = document.documentElement.offsetHeight;
 
 	window.addEventListener('scroll', function(){
-
 		var scrollY = window.scrollY;
 
 		// 현재 스크롤 위치
-		if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-			// document.querySelector(".navbar-nav").style.fontSize = "14px";
-			document.querySelector(".navbar-collapse").style.display = "flex";
+		// if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+		// 	document.querySelector(".offcanvas-collapse").style.display = "flex";
 			
-			// .navbar-logo img의 스케일 조정
-			var scaleValue = 1 - (scrollY - 50) / 500;
-			// 최대 스케일 값을 1로 제한
-			scaleValue = Math.min(1, scaleValue);
-			scaleValue = Math.max(0.1, scaleValue);
+		// 	// .navbar-logo img의 스케일 조정
+		// 	var scaleValue = 1 - (scrollY - 50) / 500;
+		// 	// 최대 스케일 값을 1로 제한
+		// 	scaleValue = Math.min(1, scaleValue);
+		// 	scaleValue = Math.max(0.1, scaleValue);
 
-			document.querySelector(".navbar-logo").style.transform = "scale(" + scaleValue + ")";
-			document.querySelector(".navbar-logo").style.transition = "0.2s ease";
-			// document.querySelector(".navbar-logo").style.top = "-172px";
-		} else {
-			// document.querySelector(".navbar-nav").style.fontSize = "0";
-			document.querySelector(".navbar-collapse").style.display = "none";
-			
-			// .navbar-logo img의 스케일을 원래 크기로 되돌림
-			// document.querySelector(".navbar-logo img").style.width = "150px";
-		}
+		// 	document.querySelector(".navbar-logo").style.transform = "scale(" + scaleValue + ")";
+		// 	document.querySelector(".navbar-logo").style.transition = "0.2s ease";
+		// 	document.querySelector(".navbar-logo img").style.top = "100px";
+		// } else {
+		// 	document.querySelector(".offcanvas-collapse").style.display = "none";
+		// 	document.querySelector(".navbar-logo img").style.top = "0";
+		// }
+
+		//progressbar
+		const scrollTop = this.document.querySelector("html").scrollTop;
+		const scrollHeight = this.document.querySelector("html").scrollHeight;
+		const clientHeight = this.document.querySelector("html").clientHeight;
+
+		console.log("scrollTop:", scrollTop);
+		console.log("scrollHeight:", scrollHeight);
+		console.log("clientHeight:", clientHeight);
+
+		// 아래 수식은 전체 세로폭 중 현재까지 스크롤한 값을 백분률 환산
+		// 브라우저 최하단까지 스크롤을 내리면 100%가 됩니다.
+		const progress = ((scrollTop + clientHeight) / scrollHeight) * 100;
+
+		document.querySelector(".progress-bar").style.width = progress + "%"
+
 	})
 }
 
