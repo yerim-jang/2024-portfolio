@@ -18,44 +18,44 @@ function scrollFunction() {
 		document.getElementById("header").classList.remove("top-nav-collapse");
 	}
 
-	// var curve_scroll = document.querySelector('.navbar-logo img')
-		// docHeight = document.documentElement.offsetHeight;
+	var curve_scroll = document.querySelector('.navbar-logo img')
+		docHeight = document.documentElement.offsetHeight;
 
 	window.addEventListener('scroll', function(){
 		var scrollY = window.scrollY;
 
 		// 현재 스크롤 위치
-		// if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-		// 	document.querySelector(".offcanvas-collapse").style.display = "flex";
+		if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+			document.querySelector(".offcanvas-collapse").style.display = "flex";
 			
 		// 	// .navbar-logo img의 스케일 조정
-		// 	var scaleValue = 1 - (scrollY - 50) / 500;
+			var scaleValue = 1 - (scrollY - 50) / 500;
 		// 	// 최대 스케일 값을 1로 제한
-		// 	scaleValue = Math.min(1, scaleValue);
-		// 	scaleValue = Math.max(0.1, scaleValue);
+			scaleValue = Math.min(1, scaleValue);
+			scaleValue = Math.max(0.1, scaleValue);
 
-		// 	document.querySelector(".navbar-logo").style.transform = "scale(" + scaleValue + ")";
-		// 	document.querySelector(".navbar-logo").style.transition = "0.2s ease";
-		// 	document.querySelector(".navbar-logo img").style.top = "100px";
-		// } else {
-		// 	document.querySelector(".offcanvas-collapse").style.display = "none";
-		// 	document.querySelector(".navbar-logo img").style.top = "0";
-		// }
+			document.querySelector(".navbar-logo").style.transform = "scale(" + scaleValue + ")";
+			document.querySelector(".navbar-logo").style.transition = "0.2s ease";
+			document.querySelector(".navbar-logo img").style.top = "100px";
+		} else {
+			document.querySelector(".offcanvas-collapse").style.display = "none";
+			document.querySelector(".navbar-logo img").style.top = "0";
+		}
 
 		//progressbar
 		const scrollTop = this.document.querySelector("html").scrollTop;
 		const scrollHeight = this.document.querySelector("html").scrollHeight;
 		const clientHeight = this.document.querySelector("html").clientHeight;
 
-		console.log("scrollTop:", scrollTop);
-		console.log("scrollHeight:", scrollHeight);
-		console.log("clientHeight:", clientHeight);
+		// console.log("scrollTop:", scrollTop);
+		// console.log("scrollHeight:", scrollHeight);
+		// console.log("clientHeight:", clientHeight);
 
 		// 아래 수식은 전체 세로폭 중 현재까지 스크롤한 값을 백분률 환산
 		// 브라우저 최하단까지 스크롤을 내리면 100%가 됩니다.
 		const progress = ((scrollTop + clientHeight) / scrollHeight) * 100;
 
-		document.querySelector(".progress-bar").style.width = progress + "%"
+		// document.querySelector(".progress-bar").style.width = progress + "%"
 
 	})
 }
@@ -91,25 +91,25 @@ function toggleDropdown(e) {
 }
 
 // On hover
-const dropdownCheck = document.querySelector('.dropdown');
+// const dropdownCheck = document.querySelector('.dropdown');
 
-if (dropdownCheck !== null) { 
-	document.querySelector(".dropdown").addEventListener("mouseleave", toggleDropdown);
-	document.querySelector(".dropdown").addEventListener("mouseover", toggleDropdown);
+// if (dropdownCheck !== null) { 
+// 	document.querySelector(".dropdown").addEventListener("mouseleave", toggleDropdown);
+// 	document.querySelector(".dropdown").addEventListener("mouseover", toggleDropdown);
 
-	// On click
-	document.querySelector(".dropdown").addEventListener("click", (e) => {
-		const _d = e.target.closest(".dropdown");
-		let _m = document.querySelector(".dropdown-menu", _d);
-		if (_d.classList.contains("show")) {
-			_m.classList.remove("show");
-			_d.classList.remove("show");
-		} else {
-			_m.classList.add("show");
-			_d.classList.add("show");
-		}
-	});
-}
+// 	// On click
+// 	document.querySelector(".dropdown").addEventListener("click", (e) => {
+// 		const _d = e.target.closest(".dropdown");
+// 		let _m = document.querySelector(".dropdown-menu", _d);
+// 		if (_d.classList.contains("show")) {
+// 			_m.classList.remove("show");
+// 			_d.classList.remove("show");
+// 		} else {
+// 			_m.classList.add("show");
+// 			_d.classList.add("show");
+// 		}
+// 	});
+// }
 
 
 /* Rotating Text - Word Cycle */
@@ -130,31 +130,7 @@ if (checkReplace !== null) {
 }
   
 
-/* Card Slider - Swiper */
-var cardSlider = new Swiper('.card-slider', {
-	autoplay: {
-		delay: 4000,
-		disableOnInteraction: false
-	},
-	loop: true,
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev'
-	},
-	slidesPerView: 3,
-	spaceBetween: 70,
-	breakpoints: {
-		// when window is <= 767px
-		767: {
-			slidesPerView: 1
-		},
-		// when window is <= 991px
-		991: {
-			slidesPerView: 2,
-			spaceBetween: 40
-		}
-	}
-});
+
 
 
 /* Back To Top Button */
@@ -175,3 +151,18 @@ function topFunction() {
 	document.body.scrollTop = 0; // for Safari
 	document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
 }
+
+
+//fullpage
+// $(document).ready(function() {
+	$('#fullpage').fullpage({
+		//options here
+		autoScrolling:true,
+		scrollHorizontally: true,
+		anchors: ['section1', 'section2', 'section3', 'section4'],
+	});
+ 
+	//methods
+	$.fn.fullpage.setAllowScrolling(false);
+// });
+

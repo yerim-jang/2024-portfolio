@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모두의 코딩 4분할 화면</title>
+    <link rel="stylesheet" href="asset/css/common.css" />
+    <link rel="stylesheet" href="asset/css/reset.css" />
+    <link rel="stylesheet" href="asset/css/style2.css" />
+
+    <!-- materialdesignicons -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" />
+    <!-- xterm -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.16.0/css/xterm.css" />
+    <!-- Monaco Editor -->
+    <link data-name="vs/editor/editor.main" rel="stylesheet" href="./asset/monaco-editor/0.27.0/min/vs/editor/editor.main.css" />
+
+    <!-- xterm -->
+    <script src="https://cdn.jsdelivr.net/npm/xterm@4.16.0/lib/xterm.min.js"></script>
+    <!-- xterm-addon-fit-->
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.5.0/lib/xterm-addon-fit.min.js"></script>
+    <!-- Monaco Editor -->
+    <!-- Monaco Editor -->
+    <script>
+      var require = {paths: {vs: './asset/monaco-editor/0.27.0/min/vs'}};
+    </script>
+    <script src="asset/monaco-editor/0.27.0/min/vs/loader.js"></script>
+    <script src="asset/monaco-editor/0.27.0/min/vs/editor/editor.main.nls.js"></script>
+    <script src="asset/monaco-editor/0.27.0/min/vs/editor/editor.main.js"></script>
+    <script src="https://unpkg.com/vue@^3.4.0"></script>
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- header -->
+      <header id="header">
+        <div class="head-tit">
+          <a href="" class="logo">
+            <img src="./asset/img/singleLogo.png" alt="모두의 코딩 로고" />
+          </a>
+          <i class="tit-bar"></i>
+          <p class="tit">강의</p>
+        </div>
+        <div class="head-bar">
+          <button class="btn btn-line prev head-btn active" @click="prevBtnClicked" id="prevBtn" title="이전">
+            <i class="mdi mdi-chevron-left"></i>
+            <span>이전</span>
+          </button>
+          <p class="tit">#00 한입에 쏙 파이썬!</p>
+          <button class="btn btn-line next head-btn" @click="nextBtnClicked" id="nextBtn" title="다음">
+            <span>다음</span>
+            <i class="mdi mdi-chevron-right"></i>
+          </button>
+        </div>
+        <div class="head-info">
+          <button class="btn btn-line chat-btn" @click="chatBtnClicked" v-show="chatOpen">채팅창 열기</button>
+          <button class="btn btn-line chat-btn" @click="chatBtnClicked" v-show="chatClose">채팅창 닫기</button>
+        </div>
+      </header>
+      <!-- // header -->
+      <!-- container -->
+      <div id="container">
+        <div class="lnb">
+          <div class="lnb-list">
+            <button @click="toggleLessonListView" id="menu" class="lnb-item tooltip-handel">
+              <i class="mdi mdi-menu"></i>
+              <p class="tooltip tooltip-right">목록 보기</p>
+            </button>
+            <button id="toggleCodingViewBtn" class="lnb-item tooltip-handel" @click="toggleCodingView" v-show="CodingViewBtnVisible">
+              <i class="mdi mdi-collage"></i>
+              <p class="tooltip tooltip-right">화면 분할 조정</p>
+            </button>
+            <button class="lnb-item tooltip-handel">
+              <i class="mdi mdi-logout-variant"></i>
+              <p class="tooltip tooltip-right">나가기</p>
+            </button>
+          </div>
+          <div class="lnb-list info">
+            <button class="lnb-item tooltip-handel">
+              <i class="mdi mdi-help-circle-outline"></i>
+              <p class="tooltip tooltip-right">시스템 문의하기</p>
+            </button>
+          </div>
+          <div class="lnb-list" style="position: absolute; bottom: 50px; left: 0; right: 0">
+            <button class="lnb-item tooltip-handel mode" @click="oneWayCoding">
+              <i class="mdi mdi-numeric-1"></i>
+              <p class="tooltip tooltip-right">단방향 Coding mode</p>
+            </button>
+            <button class="lnb-item tooltip-handel mode" @click="onWayNonCoding">
+              <i class="mdi mdi-numeric-2"></i>
+              <p class="tooltip tooltip-right">단방향 nonCoding mode</p>
+            </button>
+            <button class="lnb-item tooltip-handel mode" @click="twoWayCoding">
+              <i class="mdi mdi-numeric-3"></i>
+              <p class="tooltip tooltip-right">양방향(live) Coding mode</p>
+            </button>
+            <button class="lnb-item tooltip-handel mode" @click="twoWayNonCoding">
+              <i class="mdi mdi-numeric-4"></i>
+              <p class="tooltip tooltip-right">양방향(live) nonCoding mode</p>
+            </button>
+            <button class="lnb-item tooltip-handel mode" @click="setCodeCoachingMode">
+              <i class="mdi mdi-numeric-5"></i>
+              <p class="tooltip tooltip-right">코드 코칭 mode</p>
+            </button>
+          </div>
+        </div>
+        <div id="panelWrap" class="panel-wrap">
+          <!-- left-panel -->
+          <div id="leftPanel" class="left-panel" :class="{ leftPanelHide: leftPanelCollapsed , leftPanelFull : onCodingMode === false, leftPanelFull : secondBoxCollapsed === false }" v-show="leftPanelVisible">
+            <!-- left-panel 핸들로 숨겼을 때 버튼 바 노출-->
+            <div class="left-panel-bar" v-show="leftPanelBarVisible">
+              <button @click="toggleStudyView" class="bar-item">
+                <i class="mdi mdi-book-open-page-variant-outline"></i>
+              </button>
+            </div>
+            <!-- 강의 목록 -->
+            <div id="lessonListView" class="lesson-list-wrap scrolling" v-show="lessonListViewVisible">
+              <p class="tit">[김왼손의 왼손코딩] 한 입에 쏙 파이썬!</p>
+              <div class="list">
+                <div class="list-tit">
+                  <i class="mdi mdi-menu-right"></i>
+                  <span>시작하기 전에</span>
+                </div>
+                <a href="" class="list-item on">
+                  <span>#00 한입에 쏙 파이썬!한입에 쏙 파이썬!한입에 쏙 파이썬!한입에 쏙 파이썬!</span>
+                  <i class="mdi mdi-check-bold"></i
+                  ><!-- [P] 강의 완료 시 아이콘 노출되도록 -->
+                </a>
+                <a href="" class="list-item"
+                  >#01 프로그램과 프로그래밍
+                  <i class="mdi mdi-check-bold"></i>
+                </a>
+                <a href="" class="list-item"
+                  >#02 파이썬을 배우는 이유
+                  <i class="mdi mdi-check-bold"></i>
+                </a>
+                <a href="" class="list-item"
+                  >#03 파이썬으로 할 수 있는 것
+                  <i class="mdi mdi-check-bold"></i>
+                </a>
+                <a href="" class="list-item">#04 파이썬 설치하기</a>
+                <a href="" class="list-item">#05 기본 개발 환경</a>
+              </div>
+              <div class="list">
+                <div class="list-tit">
+                  <i class="mdi mdi-menu-right"></i>
+                  <span>나의 첫 파이썬</span>
+                </div>
+                <a href="" class="list-item">#06 나의 첫 파이썬</a>
+                <a href="" class="list-item">#07 토끼야 안녕!</a>
+                <a href="" class="list-item">#08 토끼 굴 속으로</a>
+              </div>
+              <div class="list">
+                <div class="list-tit">
+                  <i class="mdi mdi-menu-right"></i>
+                  <span>숫자형과 문자열</span>
+                </div>
+                <a href="" class="list-item">#09 숫자형</a>
+                <a href="" class="list-item">#10 더하기, 빼기, 곱하기, 나누기</a>
+                <a href="" class="list-item">#11 제곱, 몫, 나머지</a>
+                <a href="" class="list-item">#12 너무 바쁜 흰 토끼</a>
+                <a href="" class="list-item">#13 문자열</a>
+                <a href="" class="list-item">#14 문자열 연산하기</a>
+              </div>
+              <div class="list">
+                <div class="list-tit">
+                  <i class="mdi mdi-menu-right"></i>
+                  <span>무지개 만들기</span>
+                </div>
+                <a href="" class="list-item">#15 무지개 만들기</a>
+                <a href="" class="list-item">#16 변수</a>
+                <a href="" class="list-item">#17 변수 이름 짓기</a>
+              </div>
+              <div class="list">
+                <div class="list-tit">
+                  <i class="mdi mdi-menu-right"></i>
+                  <span>일일 바리스타</span>
+                </div>
+                <a href="" class="list-item">#18 일일 바리스타</a>
+                <a href="" class="list-item">#19 주석</a>
+                <a href="" class="list-item">#19 주석</a>
+                <a href="" class="list-item">#19 주석</a>
+                <a href="" class="list-item">#19 주석</a>
+                <a href="" class="list-item">#19 주석</a>
+                <a href="" class="list-item">#19 주석</a>
+              </div>
+            </div>
+            <!-- // 강의 목록 -->
+            <!-- 강의 화면 -->
+            <div id="studyView" class="study-wrap flex-col">
+              <div class="first-box">
+                <div class="first-box-top">
+                  <div class="left">
+                    <select id="lessonSelect" class="select-box" @click="lessonSelect">
+                      <option id="tab1" category="question" data-type="coding" value="0" selected="selected">영상</option>
+                      <option category="question" data-type="coding" value="1">코딩1 텐서플로-더하기연산</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- 영상 강의 화면 -->
+                <div id="videoBox" class="video-box option-item" v-show="videoBoxVisible">
+                  <iframe
+                    src="https://www.youtube.com/embed/V4atcoogC9w"
+                    width="100%"
+                    height="100%"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  ></iframe>
+                </div>
+                <!-- // 영상 강의 화면 -->
+                <!-- 코드 문제 화면  -->
+                <div id="codeBox" class="code-box option-item" v-show="codeBoxCollapsed">
+                  <!-- 문제 삽입 -->
+                  <div class="ui inner clear split">
+                    <h2>코딩 문제</h2>
+                    <br />
+                    <h3 name="title">수들의 합을 구하세요</h3>
+                    <br />
+                    <div class="editor-container-reader quill_border_set">
+                      <p>수들의 합을 구하세요</p>
+                      <p>
+                        <span style="color: rgb(102, 102, 102)">수들의 합을 구하세요</span>
+                      </p>
+                      <p>
+                        <span style="color: rgb(102, 102, 102)">수들의 합을 구하세요</span>
+                      </p>
+                      <p>
+                        <span style="color: rgb(102, 102, 102)">수들의 합을 구하세요</span>
+                      </p>
+                    </div>
+                    <div class="code_answer">
+                      <div style="background-color: transparent; margin-top: 30px; padding: 0px">
+                        <p class="tit">입력값 설명</p>
+                        <p class="inout_explain">첫번째 줄에 자연수 N이 주어집니다. (1 &lt;= N &lt;= 500) 두번째 N+1번째줄까지 수들이 주어집니다. 이 수들은 1 이상 10,000 이하의 자연수입니다.</p>
+                        <p class="tit">출력값 설명</p>
+                        <p class="inout_explain">수들의 합을 출력합니다.</p>
+                      </div>
+                      <br />
+                      <p class="tit">입력 예시 1</p>
+                      <div class="input_box">
+                        <p class="input_cont">
+                          9<br />
+                          14<br />
+                          59<br />
+                          24<br />
+                          32<br />
+                          1<br />
+                          4<br />
+                          6<br />
+                          35<br />
+                          18
+                        </p>
+                      </div>
+                      <p class="tit">출력 예시 1</p>
+                      <div class="output_box">
+                        <p class="output_cont">193</p>
+                      </div>
+                      <p class="tit">입력 예시 2</p>
+                      <div class="input_box">
+                        <p class="input_cont">
+                          10<br />
+                          6534<br />
+                          2772<br />
+                          7387<br />
+                          1728<br />
+                          7770<br />
+                          3787<br />
+                          580<br />
+                          5562<br />
+                          9284<br />
+                          5252
+                        </p>
+                      </div>
+                      <p class="tit">출력 예시 2</p>
+                      <div class="output_box">
+                        <p class="output_cont">50656</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- // 문제 삽입 -->
+                </div>
+                <!-- //코드 문제 화면  -->
+              </div>
+              <div id="contentView" class="second-box flex-col" v-show="secondBoxCollapsed">
+                <button class="handle row-handle" @click="leftSecondBoxHandleClicked">
+                  <i id="chevronDown" class="mdi mdi-chevron-down" v-show="leftSecondBoxDownHandle"></i>
+                  <i id="chevronUp" class="mdi mdi-chevron-up" v-show="leftSecondBoxUpHandle"></i>
+                </button>
+                <div class="second-box-top">
+                  <div class="left">
+                    <select class="select-box">
+                      <option value="discription" selected="selected">강의내용보기</option>
+                      <option value="discription" selected="selected">강의내용보기</option>
+                    </select>
+                  </div>
+                  <div class="right"></div>
+                </div>
+                <div class="split">
+                  <div class="split-inner">
+                    <p class="tit">#00 한입에 쏙 파이썬!</p>
+                    <p class="txt">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis!Lorem, ipsum
+                      dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis! Lorem, ipsum dolor sit amet
+                      consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autemcumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur
+                      adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing
+                      elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                      explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autemcumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at
+                      ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae
+                      eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores
+                      amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis autemcumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus
+                      fuga natus blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus
+                      blanditiis quis ullam animi fugiat perferendis autem cumque deserunt enim nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis
+                      quis ullam animi fugiat perferendis autemcumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi
+                      fugiat perferendis autem cumque deserunt enim nobis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat
+                      perferendis autem cumque deserunt enim nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis explicabo at ipsa, molestiae eius dolores amet possimus fuga natus blanditiis quis ullam animi fugiat perferendis
+                      autemcumque deserunt enim nobis!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 강의 화면 -->
+            <button id="colHandle" class="handle col-handle" @click="leftPanelHandleClicked" v-show="leftPanelHandleVisible">
+              <i id="chevronLeft" class="mdi mdi-chevron-left"></i>
+            </button>
+          </div>
+          <!-- // left-panel -->
+          <div class="resizer horizontal" data-direction="horizontal" v-show="leftPanelResizableVisible"></div>
+          <!-- 영상 전체 화면 -->
+          <div id="fullView" class="full-video" v-show="fullVideoViewVisible">
+            <div class="video-inner">
+              <div class="video-box">
+                <iframe
+                  src="https://www.youtube.com/embed/UrwFkNRzzT4?autohide=true&amp;autoplay=true&amp;color=%23444444&amp;hq=true&amp;jsapi=false&amp;modestbranding=true"
+                  width="100%"
+                  height="100%"
+                  frameborder="0"
+                  scrolling="no"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <!-- // 영상 전체 화면 -->
+          <!-- right-panel -->
+          <div id="rightPanel" class="right-panel flex-col" v-show="rightPanelVisible">
+            <div id="firstPanel" class="first-box flex-col" v-show="onCodingMode">
+              <div class="first-box-top">
+                <div class="edit-tit">
+                  <select id="theme-picker" class="select-box">
+                    <optgroup label="color" class="menu">
+                      <option value="vs">Light</option>
+                      <option value="vs-dark">Dark</option>
+                      <option value="hc-black">Black</option>
+                    </optgroup>
+                  </select>
+                  <select id="editor-fontsize" class="select-box">
+                    <optgroup label="font-size" class="menu">
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              <div class="split">
+                <!-- 여기에 에디터 삽입 -->
+                <div id="monaco-editor" style="width: 100%; height: 100%"></div>
+              </div>
+            </div>
+            <div class="resizer vertical" data-direction="vertical" v-show="onCodingMode"></div>
+            <div id="secondPanel" class="second-box flex-col" v-show="onCodingMode">
+              <button id="rowHandle" class="handle row-handle" :class="{ show: terminalHandleVisible }" @click="terminalHandleClicked">
+                <i id="chevronDown" class="mdi mdi-chevron-down" v-show="terminalDownHandleVisible"></i>
+                <i id="chevronUp" class="mdi mdi-chevron-up" v-show="terminalUpHandleVisible"></i>
+              </button>
+              <div class="second-box-top">
+                <div class="left">
+                  <!-- <button class="btn btn-type2"><i class="mdi mdi-help-circle"></i>질문하기</button> -->
+                </div>
+                <div class="right">
+                  <p class="time-set">
+                    <i class="mdi mdi-clock-outline"></i>
+                    <time id="runTimer">00:00.0</time>
+                  </p>
+                  <button id="runButton" class="btn btn-line">실행</button>
+                  <button id="stopButton" class="btn btn-line">멈춤</button>
+                </div>
+              </div>
+              <div class="second-box-body">
+                <div id="terminal"></div>
+              </div>
+            </div>
+            <!-- 2분할되면 노출 -->
+            <div id="nonCodingView" class="full-panel first-box" v-show="!onCodingMode"></div>
+            <!-- // 2분할되면 노출 -->
+          </div>
+          <!-- // right-panel -->
+          <!-- chat-panel -->
+          <div class="chat-panel" v-show="chatPanelVisible">
+            <div class="chat-member" v-show="!chatMemberCollapsed">
+              <div class="tit">
+                <i class="mdi mdi-school"></i>
+                <span>참여 인원</span>
+              </div>
+              <ul class="member-list scrolling">
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생1</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생2</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생3</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생4</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생5</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생6</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생7</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생8</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생9</span>
+                </li>
+                <li class="member-item">
+                  <img src="./asset/img/photoDefault.png" alt="" />
+                  <span class="name">학생10</span>
+                </li>
+              </ul>
+            </div>
+            <div class="chat-wrap">
+              <div id="scrollBottom" class="split msg-box">
+                <div id="chatWindow" class="chat">
+                  <ul id="chatWindow-ul">
+                    <li class="msg-list">
+                      <p>logged in.</p>
+                    </li>
+                    <!-- 메세지 보낼 때 -->
+                    <li class="msg-list msg-send">
+                      <div class="msg-item">
+                        <i class="tag"></i>
+                        <div class="text-msg">보내기</div>
+                        <span class="date">11:09</span>
+                      </div>
+                    </li>
+                    <!-- // 메세지 보낼 때 -->
+                    <!-- 메세지 받을 때 -->
+                    <li class="msg-list msg-receive">
+                      <div class="msg-info">
+                        <img src="./asset/img/photoDefault.png" alt="프로필" />
+                        <p class="user-name">
+                          username
+                          <span>Lv.05</span>
+                        </p>
+                      </div>
+                      <div class="msg-item">
+                        <div class="tag"></div>
+                        <div class="text-msg">받기</div>
+                        <div class="date">13:46</div>
+                      </div>
+                    </li>
+                    <!-- // 메세지 받을 때 -->
+                  </ul>
+                </div>
+              </div>
+              <div class="send-box">
+                <textarea id="message" class="text-form" placeholder="메세지를 입력해 주세요"></textarea>
+                <button id="sendButton" class="send-btn"></button>
+              </div>
+            </div>
+          </div>
+          <!-- // chat-panel -->
+        </div>
+      </div>
+      <!-- // container -->
+    </div>
+    <script src="asset/js/lesson_app.js"></script>
+    <script src="asset/js/resizable.js"></script>
+    <script src="asset/js/teminal.js"></script>
+    <!-- <script>
+      require.config({
+        paths: {
+          vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs',
+        },
+      });
+      require(['vs/editor/editor.main'], () => {
+        monaco.editor.create(document.getElementById('monacaEdit'), {
+          value: `function x() {
+            console.log("Hello world!");
+          }`,
+          language: 'java',
+          theme: 'vs-dark',
+        });
+      });
+    </script> -->
+    <!-- <script>
+      require.config({paths: {vs: 'https://unpkg.com/monaco-editor@0.8.3/min/vs'}});
+      window.MonacoEnvironment = {getWorkerUrl: () => proxy};
+
+      let proxy = URL.createObjectURL(
+        new Blob(
+          [
+            `
+        self.MonacoEnvironment = {
+          baseUrl: 'https://unpkg.com/monaco-editor@0.8.3/min/'
+        };
+        importScripts('https://unpkg.com/monaco-editor@0.8.3/min/vs/base/worker/workerMain.js');
+      `,
+          ],
+          {type: 'text/javascript'},
+        ),
+      );
+
+      require(['vs/editor/editor.main'], function () {
+        let editor = monaco.editor.create(document.getElementById('monacaEdit'), {
+          value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+          language: 'javascript',
+          theme: 'vs-dark',
+        });
+
+        editor.addListener('didType', () => {
+          console.log(editor.getValue());
+        });
+      });
+    </script> -->
+  </body>
+</html>
