@@ -12,7 +12,7 @@ var cardSlider = new Swiper('.card-slider', {
   slidesPerView: 2.3,
   freeMode:true,
   // slidesPerGroup: 2,//그룹으로 이동
-	spaceBetween: 40,
+	spaceBetween: 50,
 	breakpoints: {
 		// when window is <= 767px
 		767: {

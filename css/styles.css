@@ -59,6 +59,7 @@ section{position: relative;padding: 160px 40px 20px; height: 100%;}
 #resume .experience-area ul li:nth-child(3),
 #resume .experience-area ul li:nth-child(4){margin-top: 60px;}
 #resume .experience-area ul li p.p-small{color: #666;font-weight: 300;}
+#resume .experience-area ul li .left{width: 25%;}
 #resume .experience-area ul li .right span{font-size: 0.75rem;}
 
 #resume .etc-area{display: flex;justify-content: space-between;padding-top: 70px;}
