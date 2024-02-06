@@ -36,45 +36,41 @@
         <link rel="icon" href="images/favicon.png">
 
         <!-- fullpage.js -->
-        <link rel="stylesheet" href="css/fullpage.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"></script> -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"> -->
+        <link rel="stylesheet" href="css/jquery.fullpage.css">
+
     </head>
     <body data-bs-spy="scroll" data-bs-target="#navbarExample">
         <!-- ain -->
         <main id="fullpage" class="fullpage-wrapper bg-noise">        
             <!-- Header -->
-            <header id="header" class="header section" data-menuanchor="section1">
+            <header id="header" class="header section active" data-menuanchor="section1">
                 <!-- Navigation -->
                 <nav id="navbarExample" class="navbar fixed-top navbar-light" aria-label="Main navigation">
-                    <!-- <div class="container"> -->
-
-                        <div class="offcanvas-collapse" id="navbarsExampleDefault">
-                            <ul class="navbar-nav ms-auto navbar-nav-scroll">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#resume">Resume</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#stack">stack</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#details">project</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#pricing">contact</a>
-                                </li>
-                            </ul>
-                        </div> <!-- end of navbar-collapse --> 
-                        
-                        <div class="aaa">
-                            <!-- Image Logo -->
-                            <a class="navbar-logo logo-image" href="index.html"><img src="images/logo-2.svg" alt="alternative"></a>
-    
-                            <!-- progress Bar -->
-                            <!-- <div class="progress-bar"></div> -->
-                            <!-- // progress Bar -->
-                        </div>
-
-                    <!-- </div> end of container -->
-                </nav> <!-- end of navbar -->
+                    <nav class="nav">
+                        <ul class="navbar-nav navbar-nav-scroll">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#header">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#resume">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#stack">stack</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#projects">project</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#footer">contact</a>
+                            </li> -->
+                        </ul>
+                        <a class="navbar-logo" href="index.html"><img src="images/logo-2.svg" alt="alternative"></a>
+                        <div class="nav-progress-bar"></div>
+                    </nav>                   
+                </nav> 
                 <!-- end of navigation -->
                 <div class="text-container main-color">
                     <div class="row">
@@ -97,557 +93,560 @@
 
                     </div> <!-- end of row -->
                 </div> <!-- end of container -->
-            </header> <!-- end of header -->
+            </header>
             <!-- end of header -->
 
-
-            <!-- Resume -->
-            <section id="resume" class="section" data-menuanchor="section2">
-                <div class="row">
-                    <div class="col-lg-5">
-                            <div class="title-area">
-                                <h2>안녕하세요.
-                                    <br><span>웹퍼블리셔</span> 장예림 입니다.
-                                </h2>
-                                <a href="file/resume.pdf" class="btn-solid-lg" target="_blank">이력서 바로가기</a>
+            <div id="content">
+                <!-- Resume -->
+                <section id="resume" class="section" data-menuanchor="section2">
+                    <div class="row">
+                        <div class="col-lg-5">
+                                <div class="title-area">
+                                    <h2>안녕하세요.
+                                        <br><span>웹퍼블리셔</span> 장예림 입니다.
+                                    </h2>
+                                    <a href="file/resume.pdf" class="btn-solid-lg" target="_blank">이력서 바로가기</a>
+                                </div>
+                                <div class="info-area">
+                                    <h3 class="ko">장예림</h3>
+                                        <h3>Jang Yerim</h3>
+                                    <p class="p-small date">1995.06.03</p>
+                               
+                                    <p class="p-small contact">+82 10-2264-2052 <br> <a href="mailto:'disdl8575@naver.com'">disdl8575@naver.com</a></p>
+                                </div>
+                        </div> <!-- end of col -->
+            
+                        <div class="col-lg-7">
+                            <div class="experience-area">
+                                <h3>Experience</h3>
+                                <ul>
+                                    <li>
+                                        <div class="left">
+                                            <p class="p-large"><strong>포컴퍼니</strong></p>
+                                            <p class="p-small">2022.11 ~ 2024.02</p>
+                                        </div>
+                                        <div class="right">
+                                            <p class="p-large">웹퍼블리셔</p>
+                                            <p class="p-small">브랜드 자사몰 운영 및 유지보수
+                                                <br> 상세페이지 마크업 구조 및 코드 개선
+                                                <br> 카페24 모듈 수정 및 기존 기능 개선
+                                                <br> 크로스브라우징 및 반응형 오류 수정
+                                                <br> 자사몰 UXUI 개선사항 제안 및 적용
+                                                <br> 신규 브랜드 자사몰 웹기획안 작성 및 목업 제작
+                                                <br> 자사몰 리뉴얼 기획 및 퍼블리싱 진행
+                                                <br> 웹 성능 최적화 작업
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <p class="p-large"><strong>한국글로벌널리지네트워크</strong></p>
+                                            <p class="p-small">2021.12 ~ 2022.09</p>
+                                        </div>
+                                        <div class="right">
+                                            <p class="p-large">웹퍼블리셔</p>
+                                            <p class="p-small">모두의 코딩 ui ux 개선 및 경쟁사 분석
+                                                <br> 강의 플랫폼 실습 화면 개선 기획 및 퍼블리싱 진행
+                                                <br> 모두의 코딩 관리자 페이지 리뉴얼 작업
+                                                <br> 모두의 코딩 고객사 전용 커스텀 작업
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <p class="p-large"><strong>메일플러그</strong></p>
+                                            <p class="p-small">2020.09 ~ 2021.09</p>
+                                        </div>
+                                        <div class="right">
+                                            <p class="p-large">웹퍼블리셔</p>
+                                            <p class="p-small">자사 솔루션<span>(그룹웨어, 메신저)</span> 유지보수 및 리뉴얼 작업
+                                                <br> 그룹웨어 신규 근태 서비스 개발 참여 <span>(React 기반)</span>
+                                                <br> 메신저 내 신규 투표 서비스 개발 참여 <span>(Vue 기반)</span>
+                                                <br> 디자인 시스템 제작 참여 <span>(컴포넌트 단위로 퍼블리싱)</span>
+                                                <br> 퍼블리싱 가이드 제작
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="left">
+                                            <p class="p-large"><strong>무신사</strong></p>
+                                            <p class="p-small">2020.02 ~ 2020.08</p>
+                                        </div>
+                                        <div class="right">
+                                            <p class="p-large">웹디자이너</p>
+                                            <p class="p-small">무신사 스탠다드 상세페이지 제작 및 유지보수
+                                                <br> 상품 썸네일 제작
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="info-area">
-                                <h3 class="ko">장예림</h3>
-                                    <h3>Jang Yerim</h3>
-                                <p class="p-small date">1995.06.03</p>
-                                <p class="p-small contact">+82 10-2264-2052 <br>disdl8575@naver.com</p>
+                            <div class="etc-area">
+                                <div class="edu-box">
+                                    <h3>Education</h3>
+                                    <div>
+                                        <p class="p-large"><strong>하이미디어컴퓨터학원</strong></p>
+                                    </div>
+                                    <ul>
+                                        <li class="p-small">2019.03 ~ 2019.09</>
+                                        <li class="p-small">웹표준디지털디자인 과정 수료</>
+                                    </ul>
+                                </div>
+                                <div class="license-box">
+                                    <h3>License</h3>
+                                    <ul>
+                                        <li class="p-large"><strong>웹디자인 기능사</strong></li>
+                                        <li class="p-small">2022.06</li>
+                                    </ul>
+                                    <ul>
+                                        <li class="p-large"><strong>GTQ 1급</strong></li>
+                                        <li class="p-small">2019.09</>
+                                    </ul>
+                                </div>
                             </div>
-                    </div> <!-- end of col -->
-        
-                    <div class="col-lg-7">
-                        <div class="experience-area">
-                            <h3>Experience</h3>
-                            <ul>
-                                <li>
-                                    <div class="left">
-                                        <p class="p-large"><strong>포컴퍼니</strong></p>
-                                        <p class="p-small">2022.11 ~ 2024.02</p>
-                                    </div>
-                                    <div class="right">
-                                        <p class="p-large">웹퍼블리셔</p>
-                                        <p class="p-small">브랜드 자사몰 운영 및 유지보수 <span>(카페24/쇼피파이)</span>
-                                            <br> 상세페이지 마크업 구조 및 코드 개선
-                                            <br> 카페24 모듈 수정 및 기존 기능 개선
-                                            <br> 크로스브라우징 및 반응형 오류 수정
-                                            <br> 자사몰 UXUI 개선사항 제안 및 적용
-                                            <br> 신규 브랜드 자사몰 웹기획안 작성 및 목업 제작
-                                            <br> 자사몰 리뉴얼 기획 및 퍼블리싱 진행
-                                            <br> 웹 성능 최적화 작업
-                                        </p>
-                                    </div>
+    
+                        </div> <!-- end of col -->
+                    </div> <!-- end of row -->
+                </section> 
+                <!-- end of Resume -->
+    
+    
+                <!-- Stack -->
+                <section id="stack" class="section" data-menuanchor="section3">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-12">
+                            <h3 class="title">UI Develop Tech</h3>
+                        </div> 
+                        <div class="col-lg-5 col-sm-6">
+                            <div class="text-box">
+                                <p class="p-small">
+                                    웹표준/접근성 및 SEO를 고려한 코드를 작성합니다.
+                                    <br> 다양한 디바이스에 맞추어 대응이 가능하며 반응형, 적응형, 모바일웹 작업 모두 가능합니다.
+                                    <br> 디자인 결과물에 맞는 정확한 구현이 가능하며 css, scroll, animation, js 등을 활용한 동적인 웹 구현이 가능합니다.
+                                    <br> React, vue 개발 환경에서 작업이 가능하며, 프로젝트 수행 경험이 있습니다.
+                                    <br> 기본적인 javascript / jquery 활용 및 이해도가 있으며 오픈소스를 활용하여 작업한 경험이 다수 있습니다.
+                                    <br> 카페24 운영 및 유지보수 경험이 있어, 관련 오류 개선 및 홈페이지 구축이 가능합니다.
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="col-lg-3 col-sm-6">
+                            <ul class="ico-list">
+                                <li class="ico-item">
+                                    <div class="ico ico-html"></div>
+                                    <span>HTML</span>
                                 </li>
-                                <li>
-                                    <div class="left">
-                                        <p class="p-large"><strong>한국글로벌널리지네트워크</strong></p>
-                                        <p class="p-small">2021.12 ~ 2022.09</p>
-                                    </div>
-                                    <div class="right">
-                                        <p class="p-large">웹퍼블리셔</p>
-                                        <p class="p-small">모두의 코딩 ui ux 개선 및 경쟁사 분석
-                                            <br> 강의 플랫폼 실습 화면 개선 기획 및 퍼블리싱 진행
-                                            <br> 모두의 코딩 관리자 페이지 리뉴얼 작업
-                                            <br> 모두의 코딩 고객사 전용 커스텀 작업
-                                        </p>
-                                    </div>
+                                <li class="ico-item">
+                                    <div class="ico ico-css"></div>
+                                    <span>CSS</span>
                                 </li>
-                                <li>
-                                    <div class="left">
-                                        <p class="p-large"><strong>메일플러그</strong></p>
-                                        <p class="p-small">2020.09 ~ 2021.09</p>
-                                    </div>
-                                    <div class="right">
-                                        <p class="p-large">웹퍼블리셔</p>
-                                        <p class="p-small">자사 솔루션<span>(그룹웨어, 메신저)</span> 유지보수 및 리뉴얼 작업
-                                            <br> 그룹웨어 신규 근태 서비스 개발 참여 <span>(React 기반)</span>
-                                            <br> 메신저 내 신규 투표 서비스 개발 참여 <span>(Vue 기반)</span>
-                                            <br> 디자인 시스템 제작 참여 <span>(컴포넌트 단위로 퍼블리싱)</span>
-                                            <br> 퍼블리싱 가이드 제작
-                                        </p>
-                                    </div>
+                                <li class="ico-item">
+                                    <div class="ico ico-scss"></div>
+                                    <span>SCSS</span>
                                 </li>
-                                <li>
-                                    <div class="left">
-                                        <p class="p-large"><strong>무신사</strong></p>
-                                        <p class="p-small">2020.02 ~ 2020.08</p>
-                                    </div>
-                                    <div class="right">
-                                        <p class="p-large">웹디자이너</p>
-                                        <p class="p-small">무신사 스탠다드<span>(PB상품)</span> 상세페이지 제작 및 유지보수
-                                            <br> 상품 썸네일 제작
-                                        </p>
-                                    </div>
+                                <li class="ico-item">
+                                    <div class="ico ico-jquery"></div>
+                                    <span>JQUERY</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-js"></div>
+                                    <span>JS</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-bootstrap"></div>
+                                    <span>BOOTSTRAP</span>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="etc-area">
-                            <div class="edu-box">
-                                <h3>Education</h3>
-                                <div>
-                                    <p class="p-large"><strong>하이미디어컴퓨터학원</strong></p>
-                                </div>
-                                <ul>
-                                    <li class="p-small">2019.03 ~ 2019.09</>
-                                    <li class="p-small">웹표준디지털디자인 과정 수료</>
-                                </ul>
-                            </div>
-                            <div class="license-box">
-                                <h3>License</h3>
-                                <ul>
-                                    <li class="p-large"><strong>웹디자인 기능사</strong></li>
-                                    <li class="p-small">2022.06</li>
-                                </ul>
-                                <ul>
-                                    <li class="p-large"><strong>GTQ 1급</strong></li>
-                                    <li class="p-small">2019.09</>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div> <!-- end of col -->
-                </div> <!-- end of row -->
-            </section> <!-- end of cards-1 -->
-            <!-- end of Resume -->
-
-
-            <!-- Stack -->
-            <section id="stack" class="section" data-menuanchor="section3">
-                <div class="row">
-                    <div class="col-lg-4 col-sm-12">
-                        <h3 class="title">UI Develop Tech</h3>
+                        </div> 
                     </div> 
-                    <div class="col-lg-5 col-sm-6">
-                        <div class="text-box">
-                            <p class="p-small">
-                                웹표준/접근성 및 SEO를 고려한 코드를 작성합니다.
-                                <br> 다양한 디바이스에 맞추어 대응이 가능하며 반응형, 적응형, 모바일웹 작업 모두 가능합니다.
-                                <br> 디자인 결과물에 맞는 정확한 구현이 가능하며 css, scroll, animation, js 등을 활용한 동적인 웹 구현이 가능합니다.
-                                <br> React, vue 개발 환경에서 작업이 가능하며, 프로젝트 수행 경험이 있습니다.
-                                <br> 기본적인 javascript / jquery 활용 및 이해도가 있으며 오픈소스를 활용하여 작업한 경험이 다수 있습니다.
-                                <br> 카페24 운영 및 유지보수 경험이 있어, 관련 오류 개선 및 홈페이지 구축이 가능합니다.
-                            </p>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-sm-6">
-                        <ul class="ico-list">
-                            <li class="ico-item">
-                                <div class="ico ico-html"></div>
-                                <span>HTML</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-css"></div>
-                                <span>CSS</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-scss"></div>
-                                <span>SCSS</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-jquery"></div>
-                                <span>JQUERY</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-js"></div>
-                                <span>JS</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-bootstrap"></div>
-                                <span>BOOTSTRAP</span>
-                            </li>
-                        </ul>
-                    </div> 
-                </div> 
-                <div class="row">
-                    <div class="col-lg-4 col-sm-12">
-                        <h3 class="title">Design & tool tech</h3>
-                    </div> 
-                    <div class="col-lg-5 col-sm-6">
-                        <div class="text-box">
-                            <p class="p-small">
-                                Photoshop 및 XD를 이용한 디자인 및 편집 작업이 가능합니다
-                                <br> UI 디자인에서 통일성 있는 스타일을 사용하여 사용자들에게 일관된 경험을 제공하려 합니다.
-                                <br> 직관적이고 사용자가 쉽게 이해하고 조작할 수 있는 UI를 중요시합니다.
-                                <br> 보다 나은 사용자 경험을 만드는 것을 중요하게 생각합니다.
-                                <br> XD, Figma, Zeplin 등 디자인 툴로 소통하는것에 무리가 없습니다.
-                                <br> 디자인 시스템에 대한 이해도가 있으며 컴포넌트 단위 퍼블리싱 진행 경험이 있습니다.
-                            </p>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-sm-6">
-                        <ul class="ico-list">
-                            <li class="ico-item">
-                                <div class="ico ico-xd"></div>
-                                <span>XD</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-photoshop"></div>
-                                <span>PHOTOSHOP</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-figma"></div>
-                                <span>FIGMA</span>
-                            </li>
-                        </ul>
-                    </div> 
-                </div> 
-                <div class="row">
-                    <div class="col-lg-4 col-sm-12">
-                        <h3 class="title">Co-work</h3>
-                    </div> 
-                    <div class="col-lg-5 col-sm-6">
-                        <div class="text-box">
-                            <p class="p-small">
-                                UI/UX에 대한 감각을 바탕으로 개발자, 디자이너, 기획자와의 원활한 커뮤니케이션이 가능합니다.
-                                <br> git, github, notion, Jira 등을 활용한 협업 경험이 있습니다. 
-                                <br> 함께할 동료들과의 협업을 중요시하며 대인관계가 좋은 편 입니다.
-                            </p>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3 col-sm-6">
-                        <ul class="ico-list">
-                            <li class="ico-item">
-                                <div class="ico ico-git"></div>
-                                <span>GIT</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-github"></div>
-                                <span>GITHUB</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-notion"></div>
-                                <span>NOTION</span>
-                            </li>
-                            <li class="ico-item">
-                                <div class="ico ico-jira"></div>
-                                <span>JIRA</span>
-                            </li>
-                        </ul>
-                    </div> 
-                </div> 
-            </section> <!-- end of basic-1 -->
-            <!-- end of details 1 -->
-
-
-            <!-- Details Modal -->
-            <div id="staticBackdrop" class="modal fade" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="row">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <div class="col-lg-8">
-                                <div class="image-container">
-                                    <img class="img-fluid" src="images/details-modal.jpg" alt="alternative">
-                                </div> <!-- end of image-container -->
-                            </div> <!-- end of col -->
-                            <div class="col-lg-4">
-                                <h3>Goals Setting</h3>
-                                <hr>
-                                <p>In gravida at nunc sodales pretium. Vivamus semper, odio vitae mattis auctor, elit elit semper magna ac tum nico vela spider</p>
-                                <h4>User Feedback</h4>
-                                <p>Sapien vitae eros. Praesent ut erat a tellus posuere nisi more thico cursus pharetra finibus posuere nisi. Vivamus feugiat</p>
-                                <ul class="list-unstyled li-space-lg">
-                                    <li class="d-flex">
-                                        <i class="fas fa-chevron-right"></i>
-                                        <div class="flex-grow-1">Tincidunt sem vel brita bet mala</div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <i class="fas fa-chevron-right"></i>
-                                        <div class="flex-grow-1">Sapien condimentum sacoz sil necr</div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <i class="fas fa-chevron-right"></i>
-                                        <div class="flex-grow-1">Fusce interdum nec ravon fro urna</div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <i class="fas fa-chevron-right"></i>
-                                        <div class="flex-grow-1">Integer pulvinar biolot bat tortor</div>
-                                    </li>
-                                    <li class="d-flex">
-                                        <i class="fas fa-chevron-right"></i>
-                                        <div class="flex-grow-1">Id ultricies fringilla fangor raq trinit</div>
-                                    </li>
-                                </ul>
-                                <a id="modalCtaBtn" class="btn-solid-reg" href="#your-link">Details</a>
-                                <button type="button" class="btn-outline-reg" data-bs-dismiss="modal">Close</button>
-                            </div> <!-- end of col -->
-                        </div> <!-- end of row -->
-                    </div> <!-- end of modal-content -->
-                </div> <!-- end of modal-dialog -->
-            </div> <!-- end of modal -->
-            <!-- end of details modal -->
-
-            <!-- Projects -->
-            <section id="projects" class="section slider-1">
-                <div class="row">
-                    <h3 class="text-underline">Project List</h3>
-                    <div class="col-lg-12">
-                        <div class="swiper-container card-slider">
-                            <ul class="swiper-wrapper">
-                                <!-- abib linepage -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list1_bg.png" alt="abib logo">
-                                        <div class="card-btn">
-                                            <a href="https://abib.com/product/sedum.html" target="_blank">PC 바로가기</a>
-                                            <a href="https://m.abib.com/product/jericho.html" target="_blank">MO 바로가기</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[Abib]수분초, 부활초, 어성초 원물페이지 퍼블리싱</p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small">반응형, PC, 모바일 페이지 제작</p>
-                                                <p class="p-small desc">- 퍼블리싱 100%</p>
-                                                <p class="p-small desc">- 제작기간 1일 이내</p>
-                                                <ul class="skill">
-                                                    <li class="p-small">HTML</li>
-                                                    <li class="p-small">CSS</li>
-                                                    <li class="p-small">Jquery</li>
-                                                    <li class="p-small">ripple.js</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- end of abib linepage -->
-                                
-                                <!-- abib web -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list2_bg.png" alt="제품이미지">
-                                        <div class="card-btn">
-                                            <a href="https://abib.com/index.html">PC 바로가기</a>
-                                            <a href="https://m.abib.com/index.html">MO 바로가기</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[Abib] 자사몰 운영 및 유지보수 + 기능 개선 및 uxui 개선</p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small"><strong>스킨케어 브랜드 Abib 공식홈페이지 운영 및 유지보수 진행</strong></p>
-                                                <p class="p-small">UXUI 개선사항 제안 및 적용 / 카페24 모듈 기능수정 / 기능추가 업무를 진행하였으며 다양한 이벤트 페이지 
-                                                    및 상세페이지 퍼블리싱 외 운영팀 가이드 작성 업무를 진행했습니다.  구글서치콘솔을 활용하여 sEO 관련 
-                                                    개선작업을 진행했습니다. </p>
-                                                <ul class="skill">
-                                                    <li class="p-small">HTML</li>
-                                                    <li class="p-small">CSS</li>
-                                                    <li class="p-small">Jquery</li>
-                                                    <li class="p-small">Javascript</li>
-                                                    <li class="p-small">Cafe24</li>
-                                                    <li class="p-small">Shopify</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> <!-- end of abib web -->
-
-                                <!-- naming web -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list3_bg.png" alt="네이밍 로고">
-                                        <div class="card-btn">
-                                            <a href="https://naming.co.kr/" target="_blank">PC 바로가기</a>
-                                            <a href="https://m.naming.co.kr/" target="_blank">MO 바로가기</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[NAMING] 자사몰 운영 및 유지보수 + 기능개선 및 UXUI 개선</p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small"><strong>코스메틱 브랜드 네이밍 공식홈페이지 운영 및 유지보수 진행</strong></p>
-                                                <p class="p-small">메인페이지 슬라이드 작업 및 자사몰 내 페이지 리뉴얼을 진행했습니다. 오프라인 매장 검색 기능 작업을 
-                                                    진행했으며, 자사몰 리뉴얼 기획 단계 참여 및 퍼블리싱 작업을 진행했습니다. </p>
-                                                <ul class="skill">
-                                                    <li class="p-small">HTML</li>
-                                                    <li class="p-small">CSS</li>
-                                                    <li class="p-small">Jquery</li>
-                                                    <li class="p-small">Javascript</li>
-                                                    <li class="p-small">Cafe24</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project Data</p>
-                                            </div>
-                                            <div class="right">
-                                                <a href="file/2024uxui.pdf" class="desc p-small" target="_blank" ><strong>UXUI 리서치 보고서 보기</strong></a>
-                                                <a href="https://naming.co.kr/stockist.html" class="desc p-small" target="_blank"><strong>매장 검색 페이지 보기</strong></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> <!-- end of naming web -->
-
-                                <!-- modu -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list4_bg.png" alt="강의화면 스크린샷">
-                                        <div class="card-btn">
-                                            <a href="file/modu/lesson_test.html" target="_blank">데모화면 바로가기</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[모두의 코딩] 모두의 코딩 강의 실습 화면 개선 </p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small">자사 서비스인 코딩 강의 플랫폼의 Vue 기반의 코딩 강의 4분할 실습 화면 개선을 진행하였으며, 
-                                                    경쟁사의 장점을 비교해 기능적인 부분까지 리뉴얼하여 좋은 평가를 받았습니다.  해당 프로젝트 진행 시 
-                                                    기획자가 공석으로 진행되어 퍼블리싱 외 좀 더 세부적인 부분까지 고려하여 진행했던 기억이 있습니다.</p>
-                                                <p class="p-small desc">- 퍼블리싱 100%</p>
-                                                <ul class="skill">
-                                                    <li class="p-small">HTML</li>
-                                                    <li class="p-small">CSS</li>
-                                                    <li class="p-small">Jquery</li>
-                                                    <li class="p-small">Javascript</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project Data</p>
-                                            </div>
-                                            <div class="right">
-                                                <a href="file/modu/4분할강의화면정리.pdf" class="desc p-small" target="_blank"><strong>강의 화면 기능 정리 보고서 </strong></a>
-                                                <a href="file/modu/인터뷰 플랫폼 분석 보고서_장예림 연구원.pdf" class="desc p-small" target="_blank"><strong>인터뷰 플랫폼 분석 보고서</strong></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li> <!-- end of modu -->
-
-                                <!-- modu admin -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list5_bg.png" alt="관리자페이지 스크린샷">
-                                        <!-- <div class="card-btn">
-                                            <a href="file/modu/lesson_test.html" target="_blank">데모화면 바로가기</a>
-                                        </div> -->
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[모두의 코딩] 모두의 코딩 관리자 페이지 리뉴얼 </p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small">기존 관리자 페이지는 개발만 되어 레이아웃만 잡힌 상태였기에 타사 Admin 페이지들을 참고하여 
-                                                    디자인 리뉴얼 작업을 진행했습니다. 디자인 및 퍼블리싱을 진행했으며 해당작업은 tailwincss로 
-                                                    작업 되었습니다.</p>
-                                                <p class="p-small desc">- 퍼블리싱 100% / 디자인 100%</p>
-                                                <ul class="skill">
-                                                    <li class="p-small">HTML</li>
-                                                    <li class="p-small">TailwindCSS</li>
-                                                </ul>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </li> <!-- end of modu admin -->
-
-                                <!-- mailplug -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list6_bg.png" alt="메일플러그 로고">
-                                        <div class="card-btn">
-                                            <a href="https://www.mailplug.com/" target="_blank">사이트 바로가기</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[메일플러그] 그룹웨어 솔루션 퍼블리싱 및 자사 홈페이지 유지보수</p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small">신규 근태 서비스 출시 프로젝트에 참여하여 react 환경에서 퍼블리싱을 진행하였고 vue 환경인 메신저 내 
-                                                    투표 기능 추가 프로젝트에 참여하였습니다.  그룹웨어에서 발생한 퍼블리싱 버그 이슈 해결을 담당하였으며. 
-                                                    고객 피드백에 맞춘 기능 수정 작업을 진행했습니다. 
-                                                    디자인 시스템 제작에 참여하여 컴포넌트 단위로 퍼블리싱 구축 작업을 진행했습니다.
-                                                    자사 퍼블리싱 가이드를 작성하였습니다.</p>
-                                                <ul class="skill">
-                                                    <li class="p-small">HTML</li>
-                                                    <li class="p-small">CSS</li>
-                                                    <li class="p-small">SCSS</li>
-                                                    <li class="p-small">Jquery</li>
-                                                    <li class="p-small">Javascript</li>
-                                                </ul>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </li> <!-- end of mailplug -->
-
-                                <!-- musinsa -->
-                                <li class="swiper-slide">
-                                    <div class="card-img">
-                                        <img src="images/list7_bg.png" alt="무신사스탠다드 로고">
-                                        <div class="card-btn">
-                                            <a href="https://www.musinsa.com/" target="_blank">사이트 바로가기</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-bottom">
-                                        <p class="title text-underline">[무신사] 무신사 스탠다드 상세페이지 제작</p>
-                                        <div class="info-area">
-                                            <div class="left">
-                                                <p class="text-underline">Project information</p>
-                                            </div>
-                                            <div class="right">
-                                                <p class="p-small">상품 상세페이지 제작 및 썸네일 제작을 진행했습니다.</p>
-                                                <ul class="skill">
-                                                    <li class="p-small">Photoshop</li>
-                                                    <li class="p-small">Illustrator</li>
-                                                    <li class="p-small">XD</li>
-                                                </ul>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </li> <!-- end of musinsa -->
-                            
-                                <!-- end of slide -->
-                            </ul> <!-- end of swiper-wrapper -->
-                        </div> <!-- end of swiper-container -->
-                    </div> <!-- end of col -->
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <!-- end of add arrows -->
-                </div> <!-- end of row -->
-            </section> <!-- end of slider-1 -->
-            <!-- end of Projects -->
-
-            <!-- footer -->
-            <footer id="footer">
                     <div class="row">
+                        <div class="col-lg-4 col-sm-12">
+                            <h3 class="title">Design & tool tech</h3>
+                        </div> 
+                        <div class="col-lg-5 col-sm-6">
+                            <div class="text-box">
+                                <p class="p-small">
+                                    Photoshop 및 XD를 이용한 디자인 및 편집 작업이 가능합니다
+                                    <br> UI 디자인에서 통일성 있는 스타일을 사용하여 사용자들에게 일관된 경험을 제공하려 합니다.
+                                    <br> 직관적이고 사용자가 쉽게 이해하고 조작할 수 있는 UI를 중요시합니다.
+                                    <br> 보다 나은 사용자 경험을 만드는 것을 중요하게 생각합니다.
+                                    <br> XD, Figma, Zeplin 등 디자인 툴로 소통하는것에 무리가 없습니다.
+                                    <br> 디자인 시스템에 대한 이해도가 있으며 컴포넌트 단위 퍼블리싱 진행 경험이 있습니다.
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="col-lg-3 col-sm-6">
+                            <ul class="ico-list">
+                                <li class="ico-item">
+                                    <div class="ico ico-xd"></div>
+                                    <span>XD</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-photoshop"></div>
+                                    <span>PHOTOSHOP</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-figma"></div>
+                                    <span>FIGMA</span>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-12">
+                            <h3 class="title">Co-work</h3>
+                        </div> 
+                        <div class="col-lg-5 col-sm-6">
+                            <div class="text-box">
+                                <p class="p-small">
+                                    UI/UX에 대한 감각을 바탕으로 개발자, 디자이너, 기획자와의 원활한 커뮤니케이션이 가능합니다.
+                                    <br> git, github, notion, Jira 등을 활용한 협업 경험이 있습니다. 
+                                    <br> 함께할 동료들과의 협업을 중요시하며 대인관계가 좋은 편 입니다.
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="col-lg-3 col-sm-6">
+                            <ul class="ico-list">
+                                <li class="ico-item">
+                                    <div class="ico ico-git"></div>
+                                    <span>GIT</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-github"></div>
+                                    <span>GITHUB</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-notion"></div>
+                                    <span>NOTION</span>
+                                </li>
+                                <li class="ico-item">
+                                    <div class="ico ico-jira"></div>
+                                    <span>JIRA</span>
+                                </li>
+                            </ul>
+                        </div> 
+                    </div> 
+                </section> 
+                <!-- end of stack -->
+    
+    
+                <!-- Projects -->
+                <section id="projects" class="section slider-1">
+                    <div class="row">
+                        <h3 class="text-underline">Project List</h3>
                         <div class="col-lg-12">
-                            <p class="p-small">본 사이트는 상업적 목적이 아닌 개인 포트폴리오 목적으로 제작되었습니다.</p>
-                            <p class="p-small">© Copyright <strong>ylhome.</strong> All Rights Reserved</p>
+                            <div class="swiper-container card-slider">
+                                <ul class="swiper-wrapper">
+                                    <!-- abib linepage -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list1_bg.png" alt="abib logo">
+                                            <div class="card-btn">
+                                                <a href="https://abib.com/product/sedum.html" target="_blank">PC 바로가기</a>
+                                                <a href="https://m.abib.com/product/jericho.html" target="_blank">MO 바로가기</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[Abib]수분초, 부활초, 어성초 원물페이지 퍼블리싱</p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small">반응형, PC, 모바일 페이지 제작</p>
+                                                    <p class="p-small desc">- 퍼블리싱 100%</p>
+                                                    <p class="p-small desc">- 제작기간 1일 이내</p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">HTML</li>
+                                                        <li class="p-small">CSS</li>
+                                                        <li class="p-small">Jquery</li>
+                                                        <li class="p-small">ripple.js</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- end of abib linepage -->
+                                    
+                                    <!-- abib web -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list2_bg.png" alt="제품이미지">
+                                            <div class="card-btn">
+                                                <a href="https://abib.com/index.html">PC 바로가기</a>
+                                                <a href="https://m.abib.com/index.html">MO 바로가기</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[Abib] 자사몰 운영 및 유지보수 + 기능 개선 및 uxui 개선</p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small"><strong>스킨케어 브랜드 Abib 공식홈페이지 운영 및 유지보수 진행</strong></p>
+                                                    <p class="p-small">UXUI 개선사항 제안 및 적용 / 카페24 모듈 기능수정 / 기능추가 업무를 진행하였으며 다양한 이벤트 페이지 
+                                                        및 상세페이지 퍼블리싱 외 운영팀 가이드 작성 업무를 진행했습니다.  구글서치콘솔을 활용하여 SEO 관련 
+                                                        개선작업을 진행했습니다. </p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">HTML</li>
+                                                        <li class="p-small">CSS</li>
+                                                        <li class="p-small">Jquery</li>
+                                                        <li class="p-small">Javascript</li>
+                                                        <li class="p-small">Cafe24</li>
+                                                        <li class="p-small">Shopify</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li> <!-- end of abib web -->
+    
+                                    <!-- naming web -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list3_bg.png" alt="네이밍 로고">
+                                            <div class="card-btn">
+                                                <a href="https://naming.co.kr/" target="_blank">PC 바로가기</a>
+                                                <a href="https://m.naming.co.kr/" target="_blank">MO 바로가기</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[NAMING] 자사몰 운영 및 유지보수 + 기능개선 및 UXUI 개선</p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small"><strong>코스메틱 브랜드 네이밍 공식홈페이지 운영 및 유지보수 진행</strong></p>
+                                                    <p class="p-small">메인페이지 슬라이드 작업 및 자사몰 내 페이지 리뉴얼을 진행했습니다. 오프라인 매장 검색 기능 작업을 
+                                                        진행했으며, 자사몰 리뉴얼 기획 단계 참여 및 퍼블리싱 작업을 진행했습니다. </p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">HTML</li>
+                                                        <li class="p-small">CSS</li>
+                                                        <li class="p-small">Jquery</li>
+                                                        <li class="p-small">Javascript</li>
+                                                        <li class="p-small">Cafe24</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project Data</p>
+                                                </div>
+                                                <div class="right">
+                                                    <a href="file/2024uxui.pdf" class="desc p-small" target="_blank" ><strong>UXUI 리서치 보고서 보기</strong></a>
+                                                    <a href="https://naming.co.kr/stockist.html" class="desc p-small" target="_blank"><strong>매장 검색 페이지 보기</strong></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li> <!-- end of naming web -->
+    
+                                    <!-- modu -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list4_bg.png" alt="강의화면 스크린샷">
+                                            <div class="card-btn">
+                                                <a href="file/modu/lesson_test.html" target="_blank">데모화면 바로가기</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[모두의 코딩] 모두의 코딩 강의 실습 화면 개선 </p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small">자사 서비스인 코딩 강의 플랫폼의 Vue 기반의 코딩 강의 4분할 실습 화면 개선을 진행하였으며, 
+                                                        경쟁사의 장점을 비교해 기능적인 부분까지 리뉴얼하여 좋은 평가를 받았습니다.  해당 프로젝트 진행 시 
+                                                        기획자가 공석으로 진행되어 퍼블리싱 외 좀 더 세부적인 부분까지 고려하여 진행했던 기억이 있습니다.</p>
+                                                    <p class="p-small desc">- 퍼블리싱 100%</p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">HTML</li>
+                                                        <li class="p-small">CSS</li>
+                                                        <li class="p-small">Jquery</li>
+                                                        <li class="p-small">Javascript</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project Data</p>
+                                                </div>
+                                                <div class="right">
+                                                    <a href="file/modu/4분할강의화면정리.pdf" class="desc p-small" target="_blank"><strong>강의 화면 기능 정리 보고서 </strong></a>
+                                                    <a href="file/modu/인터뷰 플랫폼 분석 보고서_장예림 연구원.pdf" class="desc p-small" target="_blank"><strong>인터뷰 플랫폼 분석 보고서</strong></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li> <!-- end of modu -->
+    
+                                    <!-- modu admin -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list5_bg.png" alt="관리자페이지 스크린샷">
+                                            <!-- <div class="card-btn">
+                                                <a href="file/modu/lesson_test.html" target="_blank">데모화면 바로가기</a>
+                                            </div> -->
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[모두의 코딩] 모두의 코딩 관리자 페이지 리뉴얼 </p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small">기존 관리자 페이지는 개발만 되어 레이아웃만 잡힌 상태였기에 타사 Admin 페이지들을 참고하여 
+                                                        디자인 리뉴얼 작업을 진행했습니다. 디자인 및 퍼블리싱을 진행했으며 해당작업은 tailwincss로 
+                                                        작업 되었습니다.</p>
+                                                    <p class="p-small desc">- 퍼블리싱 100% / 디자인 100%</p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">HTML</li>
+                                                        <li class="p-small">TailwindCSS</li>
+                                                    </ul>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </li> <!-- end of modu admin -->
+    
+                                    <!-- mailplug -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list6_bg.png" alt="메일플러그 로고">
+                                            <div class="card-btn">
+                                                <a href="https://www.mailplug.com/" target="_blank">사이트 바로가기</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[메일플러그] 그룹웨어 솔루션 퍼블리싱 및 자사 홈페이지 유지보수</p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small">신규 근태 서비스 출시 프로젝트에 참여하여 react 환경에서 퍼블리싱을 진행하였고 vue 환경인 메신저 내 
+                                                        투표 기능 추가 프로젝트에 참여하였습니다.  그룹웨어에서 발생한 퍼블리싱 버그 이슈 해결을 담당하였으며. 
+                                                        고객 피드백에 맞춘 기능 수정 작업을 진행했습니다. 
+                                                        디자인 시스템 제작에 참여하여 컴포넌트 단위로 퍼블리싱 구축 작업을 진행했습니다.
+                                                        자사 퍼블리싱 가이드를 작성하였습니다.</p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">HTML</li>
+                                                        <li class="p-small">CSS</li>
+                                                        <li class="p-small">SCSS</li>
+                                                        <li class="p-small">Jquery</li>
+                                                        <li class="p-small">Javascript</li>
+                                                    </ul>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </li> <!-- end of mailplug -->
+    
+                                    <!-- musinsa -->
+                                    <li class="swiper-slide">
+                                        <div class="card-img">
+                                            <img src="images/list7_bg.png" alt="무신사스탠다드 로고">
+                                            <div class="card-btn">
+                                                <a href="https://www.musinsa.com/app/goods/996180" target="_blank">사이트 바로가기</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-bottom">
+                                            <p class="title text-underline">[무신사] 무신사 스탠다드 상세페이지 제작</p>
+                                            <div class="info-area">
+                                                <div class="left">
+                                                    <p class="text-underline">Project information</p>
+                                                </div>
+                                                <div class="right">
+                                                    <p class="p-small">상품 상세페이지 제작 및 상품썸네일 제작을 진행했습니다.</p>
+                                                    <ul class="skill">
+                                                        <li class="p-small">Photoshop</li>
+                                                        <li class="p-small">Illustrator</li>
+                                                        <li class="p-small">XD</li>
+                                                    </ul>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </li> <!-- end of musinsa -->
+                                
+                                    <!-- end of slide -->
+                                </ul> <!-- end of swiper-wrapper -->
+                            </div> <!-- end of swiper-container -->
                         </div> <!-- end of col -->
-                    </div> <!-- end of row -->   
-            </footer>
-            <!-- end of footer -->
-            
-
-            <!-- Back To Top Button -->
-            <button onclick="topFunction()" id="myBtn">
-                <img src="images/up-arrow.png" alt="alternative">
-            </button>
-            <!-- end of back to top button -->
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <!-- end of add arrows -->
+                    </div> <!-- end of row -->
+                </section>
+                <!-- end of Projects -->
+    
+                <!-- footer -->
+                <footer id="footer">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="p-small">본 사이트는 상업적 목적이 아닌 개인 포트폴리오 목적으로 제작되었습니다.</p>
+                                <p class="p-small">© Copyright <strong>ylhome.</strong> All Rights Reserved</p>
+                            </div> <!-- end of col -->
+                        </div> <!-- end of row -->   
+                </footer>
+                <!-- end of footer -->
                 
+                <!-- Details Modal -->
+                <div id="staticBackdrop" class="modal fade" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="row">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="col-lg-8">
+                                    <div class="image-container">
+                                        <img class="img-fluid" src="images/details-modal.jpg" alt="alternative">
+                                    </div> <!-- end of image-container -->
+                                </div> <!-- end of col -->
+                                <div class="col-lg-4">
+                                    <h3>Goals Setting</h3>
+                                    <hr>
+                                    <p>In gravida at nunc sodales pretium. Vivamus semper, odio vitae mattis auctor, elit elit semper magna ac tum nico vela spider</p>
+                                    <h4>User Feedback</h4>
+                                    <p>Sapien vitae eros. Praesent ut erat a tellus posuere nisi more thico cursus pharetra finibus posuere nisi. Vivamus feugiat</p>
+                                    <ul class="list-unstyled li-space-lg">
+                                        <li class="d-flex">
+                                            <i class="fas fa-chevron-right"></i>
+                                            <div class="flex-grow-1">Tincidunt sem vel brita bet mala</div>
+                                        </li>
+                                        <li class="d-flex">
+                                            <i class="fas fa-chevron-right"></i>
+                                            <div class="flex-grow-1">Sapien condimentum sacoz sil necr</div>
+                                        </li>
+                                        <li class="d-flex">
+                                            <i class="fas fa-chevron-right"></i>
+                                            <div class="flex-grow-1">Fusce interdum nec ravon fro urna</div>
+                                        </li>
+                                        <li class="d-flex">
+                                            <i class="fas fa-chevron-right"></i>
+                                            <div class="flex-grow-1">Integer pulvinar biolot bat tortor</div>
+                                        </li>
+                                        <li class="d-flex">
+                                            <i class="fas fa-chevron-right"></i>
+                                            <div class="flex-grow-1">Id ultricies fringilla fangor raq trinit</div>
+                                        </li>
+                                    </ul>
+                                    <a id="modalCtaBtn" class="btn-solid-reg" href="#your-link">Details</a>
+                                    <button type="button" class="btn-outline-reg" data-bs-dismiss="modal">Close</button>
+                                </div> <!-- end of col -->
+                            </div> <!-- end of row -->
+                        </div> <!-- end of modal-content -->
+                    </div> <!-- end of modal-dialog -->
+                </div>
+                <!-- end of details modal -->
+                
+                <!-- Back To Top Button -->
+                <button onclick="scrollFunctionBTT()" id="myBtn">
+                    <img src="images/cursor-arrow.png" alt="alternative">
+                    Back to top
+                </button>
+                <!-- end of back to top button -->
+            </div>
         </main>
         <!-- end of main -->
+
+    
         <!-- Scripts -->
         <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
         <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
@@ -655,6 +654,7 @@
         <script src="js/replaceme.min.js"></script> <!-- ReplaceMe for rotating text -->
         <script src="js/scripts.js"></script> <!-- Custom scripts -->
         <script src="js/swiper-slide.js"></script> <!-- Custom swiper -->
-        <script src="js/fullpage.js"></script>
+        <script src="js/jquery.fullpage.js"></script>
+        <!-- <script src="js/fullpage.js"></script> -->
     </body>
 </html>

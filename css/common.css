@@ -224,8 +224,9 @@ a:hover {
 
 .btn-solid-lg:hover {
 	background-color: transparent;
-	color: #272556; /* needs to stay here because of the color property of a tag */
+	color: #A91C1C; /* needs to stay here because of the color property of a tag */
 	text-decoration: none;
+	border: 2px solid #a91c1c;
 }
 
 .btn-solid-sm {

@@ -1,14 +1,9 @@
 /* Description: Custom JS file */
 
 /* Navigation*/
-// Collapse the navbar by adding the top-nav-collapse class
 window.onscroll = function () {
-	scrollFunction();
-	// scrollFunctionBTT(); // back to top button
-};
-
-window.onload = function () {
-	scrollFunction();
+	scrollFunction();//로고 사이즈 변경
+	scrollNavFunction();//nav 노출
 };
 
 function scrollFunction() {
@@ -18,97 +13,70 @@ function scrollFunction() {
 		document.getElementById("header").classList.remove("top-nav-collapse");
 	}
 
-	var curve_scroll = document.querySelector('.navbar-logo img')
-		docHeight = document.documentElement.offsetHeight;
+	docHeight = document.documentElement.offsetHeight;
 
 	window.addEventListener('scroll', function(){
 		var scrollY = window.scrollY;
 
 		// 현재 스크롤 위치
 		if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-			document.querySelector(".offcanvas-collapse").style.display = "flex";
 			
-		// 	// .navbar-logo img의 스케일 조정
-			var scaleValue = 1 - (scrollY - 50) / 500;
-		// 	// 최대 스케일 값을 1로 제한
+			// .navbar-logo img의 스케일 조정
+			var scaleValue = 1 - (scrollY - 50) / 300;
+		
+			// 최대 스케일 값을 1로 제한
 			scaleValue = Math.min(1, scaleValue);
-			scaleValue = Math.max(0.1, scaleValue);
+			scaleValue = Math.max(0.08, scaleValue);
 
 			document.querySelector(".navbar-logo").style.transform = "scale(" + scaleValue + ")";
 			document.querySelector(".navbar-logo").style.transition = "0.2s ease";
-			document.querySelector(".navbar-logo img").style.top = "100px";
 		} else {
-			document.querySelector(".offcanvas-collapse").style.display = "none";
-			document.querySelector(".navbar-logo img").style.top = "0";
+			scaleValue = Math.max(0.08, scaleValue);
 		}
-
-		//progressbar
-		const scrollTop = this.document.querySelector("html").scrollTop;
-		const scrollHeight = this.document.querySelector("html").scrollHeight;
-		const clientHeight = this.document.querySelector("html").clientHeight;
-
-		// console.log("scrollTop:", scrollTop);
-		// console.log("scrollHeight:", scrollHeight);
-		// console.log("clientHeight:", clientHeight);
-
-		// 아래 수식은 전체 세로폭 중 현재까지 스크롤한 값을 백분률 환산
-		// 브라우저 최하단까지 스크롤을 내리면 100%가 됩니다.
-		const progress = ((scrollTop + clientHeight) / scrollHeight) * 100;
-
-		// document.querySelector(".progress-bar").style.width = progress + "%"
 
 	})
 }
 
-// Navbar on mobile
-let elements = document.querySelectorAll(".nav-link:not(.dropdown-toggle)");
+function scrollNavFunction() { 
+		let lastScroll = document.documentElement.scrollTop || 0
+		
+		document.addEventListener('scroll', function () {
+			
+			let scrollTop = document.documentElement.scrollTop
+			if(scrollTop > lastScroll) {
+				// down
+				document.querySelector(".navbar-nav").classList.remove('open');
+				document.querySelector(".navbar").style.background = 'transparent';
 
-for (let i = 0; i < elements.length; i++) {
-	elements[i].addEventListener("click", () => {
-		document.querySelector(".offcanvas-collapse").classList.toggle("open");
-	});
+			} else if (document.documentElement.scrollTop < 10) { 
+				document.querySelector(".navbar-nav").classList.remove('open');
+				document.querySelector(".navbar").style.background = 'transparent';
+
+			} else {
+				//up
+				document.querySelector(".navbar-nav").classList.add('open');
+				document.querySelector(".navbar").style.background = '#e9e9e9';
+			}
+			lastScroll = scrollTop
+		})
 }
 
-document.querySelector(".navbar-toggler").addEventListener("click", () => {
-  	document.querySelector(".offcanvas-collapse").classList.toggle("open");
-});
 
-// Hover on desktop
-function toggleDropdown(e) {
-	const _d = e.target.closest(".dropdown");
-	let _m = document.querySelector(".dropdown-menu", _d);
+// // Hover on desktop
+// function toggleDropdown(e) {
+// 	const _d = e.target.closest(".dropdown");
+// 	let _m = document.querySelector(".dropdown-menu", _d);
 
-	setTimeout(
-		function () {
-		const shouldOpen = _d.matches(":hover");
-		_m.classList.toggle("show", shouldOpen);
-		_d.classList.toggle("show", shouldOpen);
+// 	setTimeout(
+// 		function () {
+// 		const shouldOpen = _d.matches(":hover");
+// 		_m.classList.toggle("show", shouldOpen);
+// 		_d.classList.toggle("show", shouldOpen);
 
-		_d.setAttribute("aria-expanded", shouldOpen);
-		},
-		e.type === "mouseleave" ? 300 : 0
-	);
-}
-
-// On hover
-// const dropdownCheck = document.querySelector('.dropdown');
-
-// if (dropdownCheck !== null) { 
-// 	document.querySelector(".dropdown").addEventListener("mouseleave", toggleDropdown);
-// 	document.querySelector(".dropdown").addEventListener("mouseover", toggleDropdown);
-
-// 	// On click
-// 	document.querySelector(".dropdown").addEventListener("click", (e) => {
-// 		const _d = e.target.closest(".dropdown");
-// 		let _m = document.querySelector(".dropdown-menu", _d);
-// 		if (_d.classList.contains("show")) {
-// 			_m.classList.remove("show");
-// 			_d.classList.remove("show");
-// 		} else {
-// 			_m.classList.add("show");
-// 			_d.classList.add("show");
-// 		}
-// 	});
+// 		_d.setAttribute("aria-expanded", shouldOpen);
+// 		},
+// 		e.type === "mouseleave" ? 300 : 0
+// 	);
 // }
 
 
@@ -128,41 +96,33 @@ if (checkReplace !== null) {
 		onComplete: false                                   // Function
 	});
 }
-  
-
-
 
 
 /* Back To Top Button */
 // Get the button
-myButton = document.getElementById("myBtn");
+const backToTop = document.querySelector("#myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-// function scrollFunctionBTT() {
-// 	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-// 		myButton.style.display = "block";
-// 	} else {
-// 		myButton.style.display = "none";
-// 	}
-// }
+const checkScroll = () => {
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-	document.body.scrollTop = 0; // for Safari
-	document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE and Opera
+	// 페이지가 수직으로 얼마나 스크롤되었는지를 확인하는 값(픽셀 단위로 변환) pageOffset
+	let pageOffset = window.pageYOffset;
+	// 이 값이 0이 아니면, 클래스를 show를 선언하고, 그렇지 않다면 show를 삭제한다. 디폴트 css는 hidden상태
+	// 0이면 스크롤이 안된상태 이고, 0이 아니면 스크롤이 일어난상태 
+	if(pageYOffset > 800 ){
+			backToTop.style.opacity = '1';  
+	}else{
+			backToTop.style.opacity = '0';  
+	}
 }
 
+const moveBackToTop=()=>{
+    if(window.pageYOffset > 0 ){
+        //스무스하게 스크롤 하기 //어디까지 올라갈지 위치를 정한다. behavior 자연스럽게 이동.
+        window.scrollTo({top:0, behavior:"smooth"});
+    }
+}
 
-//fullpage
-// $(document).ready(function() {
-	$('#fullpage').fullpage({
-		//options here
-		autoScrolling:true,
-		scrollHorizontally: true,
-		anchors: ['section1', 'section2', 'section3', 'section4'],
-	});
- 
-	//methods
-	$.fn.fullpage.setAllowScrolling(false);
-// });
-
+// 스크롤할때마다, checkScroll을 호출해라.
+window.addEventListener('scroll', checkScroll);
+// 클릭하면 oveBackToTop를 호출해라
+backToTop.addEventListener('click',moveBackToTop);
